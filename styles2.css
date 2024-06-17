@@ -1,0 +1,561 @@
+.range-slider {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  
+  .range-slider label {
+    color: #000000;
+    font-size: 13px;
+  }
+  
+  .range-slider .number-group {
+    flex: 1 0 auto;
+    text-align: right;
+    height: 30px;
+    font-weight: 300;
+    font-size: 13px;
+    color: #040404;
+  }
+  
+  .range-slider .number-group .number-input {
+    width: 36px;
+    height: 30px;
+    text-align: center;
+    color: #3FAFFA;
+    background-color: #3D3E3F;
+    border: 0;
+  }
+  
+  .range-slider .number-group .number-input:first-of-type {
+    margin-right: 7px;
+  }
+  
+  .range-slider .number-group .number-input:last-of-type {
+    margin-left: 7px;
+  }
+  
+  .range-slider .number-group .number-input::-webkit-outer-spin-button,
+  .range-slider .number-group .number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  
+  .range-slider .number-group .number-input:invalid,
+  .range-slider .number-group .number-input:out-of-range {
+    border: 2px solid red;
+  }
+  
+  .range-slider .range-group {
+    position: relative;
+    flex: 0 0 100%;
+    height: 47px;
+  }
+  
+  .range-slider .range-group .range-input {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    -webkit-appearance: none;
+    width: 100%;
+    border-bottom: 0;
+  }
+  
+  .range-slider .range-group .range-input:focus {
+    outline: 0;
+  }
+  
+  .range-slider .range-group .range-input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: #3FAFFA;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+  }
+  
+  .range-slider .range-group .range-input::-webkit-slider-thumb {
+    z-index: 2;
+    position: relative;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #3FAFFA;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+  }
+  
+  .range-slider .range-group .range-input::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: #3FAFFA;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+  }
+  
+  .range-slider .range-group .range-input::-moz-range-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #2497e3;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #3FAFFA;
+    cursor: pointer;
+  }
+  
+  .range-slider .range-group .range-input::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  
+  .range-slider .range-group .range-input::-ms-fill-lower,
+  .range-slider .range-group .range-input::-ms-fill-upper {
+    background: #3FAFFA;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+  }
+  
+  .range-slider .range-group .range-input::-ms-thumb {
+    z-index: 2;
+    position: relative;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #3FAFFA;
+    cursor: pointer;
+  }
+  
+  /* for demo purposes */
+  body {
+    background-color: #323334;
+  }
+  
+  .range-slider,
+  .filter {
+    margin: 0 auto 30px;
+    max-width: 50%;
+  }
+
+  /* Estilizando o formulário */
+form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1500px;
+  height: 1500px;
+  padding: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background: rgba(250, 250, 250, 0.5);
+  -moz-box-shadow: 0 0 13px 3px rgba(240, 240, 240, 0.5);
+  -webkit-box-shadow: 0 0 13px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 13px 3px rgba(255, 255, 255, 0.5);
+}
+
+h2 {
+  color:  #2a2727;
+  flex: 1; /* Ocupar o espaço disponível à esquerda */
+  margin-top: 3px;
+}
+
+h3{
+  color: #2a2727;
+}
+
+/* Estilizando a página de fundo */
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+body {
+    background: linear-gradient(to bottom, #f8f8f8, #a6abec);
+    font-family: 'Source Sans Pro', sans-serif;
+    padding-top: 100px;
+}
+
+.range-group {
+  position: relative;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  white-space: nowrap;
+  color: #000000;
+}
+
+.slider-label {
+  flex: 0;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  max-width: 1500px; /* Largura do formulário */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slider-container {
+  border: 1px solid #ccc;
+  /* Adicione borda para criar o efeito de "frame" */
+  padding: 10px;
+  /* Ajuste conforme necessário */
+  margin: 0 auto;
+  flex: 1; 
+  max-width: 1600px;
+ }
+
+.container.left,
+.container.right {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+      flex: 1; /* Ocupar o máximo de espaço possível dentro do flex container */
+    }
+
+.score-ruler {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.score-marker {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: #007BFF;
+  border-radius: 50%;
+  color: #000000;
+  text-align: center;
+  line-height: 20px;
+}
+
+
+.logo-container {
+  position: relative;
+  float: left;
+  margin-bottom: 30px; /* Adjust the margin as needed */
+}
+
+/*css da barra*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #0f79ef;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+#app {
+  width: 980px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.score-bar-wrapper {
+  display: inline-block;
+  padding-top: 40px;
+  margin-top: -40px;
+  padding-bottom: 20px;
+  font-size: 0;
+  position: relative;
+}
+
+.score-bar-wrapper span {
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--i) * 10% );
+  font-size: 12px;
+  color: #000000;
+}
+
+.score-pop {
+  font-size: 8px;
+  width: 4em;
+  height: 3em;
+  border-radius: 0.5em;
+  position: absolute;
+  left: calc(var(--left) * 1% + var(--deviation) * 1em);
+  top: 0;
+  border: 1px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  background: #ffffff;
+  transform: translateX(-2em);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10;
+  transition: all 0.1s;
+}
+
+.score-bar-wrapper:hover .score-pop {
+  opacity: 1;
+  visibility: visible;
+}
+
+.score-pop::after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 50%;
+  width: 0.8em;
+  height: 0.8em;
+  background: #ffffff;
+  border: 1px solid var(--color-primary);
+  border-left-color: transparent;
+  border-top-color: transparent;
+  transform: translate(-0.4em, -0.4em) rotate(45deg);
+}
+
+.score-pop span {
+  display: block;
+  color: var(--color-primary);
+  height: 20px;
+  line-height: 17px;
+}
+
+.score-bar {
+  position: relative;
+  display: inline-flex;
+}
+
+input[type="range"] {
+  font-size: 8px;
+  width: 78.5em;
+  height: 1em;
+  appearance: none;
+  background: linear-gradient(90deg, #4eec59, #f1eb85, #1087fd) no-repeat,
+    #e5ecfc;
+  border-radius: 0.3em;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  cursor: pointer;
+  appearance: none;
+  width: 1em;
+  height: 2em;
+  border-radius: 0.3em;
+  background: #ffffff;
+  border: 1px solid #ececec;
+}
+
+input[type="range"]::-moz-range-thumb {
+  cursor: pointer;
+  appearance: none;
+  width: 1em;
+  height: 2em;
+  border-radius: 0.3em;
+  background: #ffffff;
+  border: 1px solid #ececec;
+}
+
+.scale {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8px;
+  width: 77em; /* Ajuste o tamanho total conforme necessário */
+  height: 1em;
+  border-radius: 0.3em;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 10%,
+    rgb(255, 255, 255) 10%,
+    rgb(255, 255, 255) 10.5%,
+    transparent 10%,
+    transparent 20%,
+    rgb(255, 255, 255) 20%,
+    rgb(255, 255, 255) 20.5%,
+    transparent 20%,
+    transparent 30%,
+    rgb(255, 255, 255) 30%,
+    rgb(255, 255, 255) 30.5%,
+    transparent 30%,
+    transparent 40%,
+    rgb(255, 255, 255) 40%,
+    rgb(255, 255, 255) 40.5%,
+    transparent 40%,
+    transparent 50%,
+    rgb(255, 255, 255) 50%,
+    rgb(255, 255, 255) 50.5%,
+    transparent 50%,
+    transparent 60%,
+    rgb(255, 255, 255) 60%,
+    rgb(255, 255, 255) 60.5%,
+    transparent 60%,
+    transparent 70%,
+    rgb(255, 255, 255) 70%,
+    rgb(255, 255, 255) 70.5%,
+    transparent 70%,
+    transparent 80%,
+    rgb(255, 255, 255) 80%,
+    rgb(255, 255, 255) 80.5%,
+    transparent 80%,
+    transparent 90%,
+    rgb(255, 255, 255) 90%,
+    rgb(255, 255, 255) 90.5%,
+    transparent 90%,
+    transparent 100%
+  );
+}
+
+
+.score-number {
+  display: inline-block;
+  color: var(--color-primary);
+  font-size: 16px;
+  margin-left: 40px;
+  vertical-align: top;
+  padding-top: 4px;
+  font-weight: bold;
+}
+
+.score {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+}
+
+.centro {
+  text-align:right;
+}
+
+/*CSS do Circle Bar */
+
+.circle-bar{
+  width:200px;
+  height:200px;
+  margin:20px;
+  box-shadow:none;
+}
+
+
+
+/* ----- The actual thing ----- */
+
+/* Variables */
+
+:root {
+  --rating-size: 10rem;
+  --bar-size: 1rem;
+  --background-color: #e7f2fa;
+  --rating-color-default: #2980b9;
+  --rating-color-background: #c7e1f3;
+  --rating-color-good: #27ae60;
+  --rating-color-meh: #f1c40f;
+  --rating-color-bad: #e74c3c;
+}
+
+/* Rating item */
+
+.rating-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ /* Defina a altura conforme necessário ou use 100% para altura total do contêiner pai. */
+}
+
+.rating {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  overflow: hidden;
+  
+  background: var(--rating-color-default);
+  color: var(--rating-color-default);
+  width: var(--rating-size);
+  height: var(--rating-size);
+
+  /* Basic style for the text */
+  font-size: calc(var(--rating-size) / 3);
+  line-height: 1;
+}
+
+/* Rating circle content */
+.rating span {
+  position: relative;
+  display: flex;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.rating span small {
+  font-size: 0.5em;
+  font-weight: 900;
+  align-self: center;
+}
+
+/* Bar mask, creates an inner circle with the same color as thee background */
+.rating::after {
+  content: "";
+  position: absolute;
+  inset: var(--bar-size);
+  background: var(--background-color);
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* Bar background */
+.rating::before {
+  content: "";
+  position: absolute;
+  inset: var(--bar-size);
+  border-radius: inherit;
+  box-shadow: 0 0 0 1rem var(--rating-color-background);
+  z-index: -1;
+}
+
+/* Classes to give different colors to ratings, based on their score */
+.rating.good {
+  background: var(--rating-color-good);
+  color: var(--rating-color-good);
+}
+
+.rating.meh {
+  background: var(--rating-color-meh);
+  color: var(--rating-color-meh);
+}
+
+.rating.bad {
+  background: var(--rating-color-bad);
+  color: var(--rating-color-bad);
+}

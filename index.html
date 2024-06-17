@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <title>Nomograma</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 50;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .logo-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo-container img {
+            max-width: 200px;
+            /* Ajuste o tamanho da imagem conforme necessário */
+        }
+        </style>
+        </head>
+        
+        <body>
+          <div class="logo-container">
+            <img src="ha_logo.png" alt="Logo">
+          </div>
+
+            <div class="slider-container">
+            <h1>Nomograma clínico-molecular para manejo de casos operáveis de CPNPC </h1>
+              <h2>Classificação de risco de acordo com a assinatura molecular de 12-genes</h2>
+            <br>
+            <h4>Pesquisador Principal: Letícia Ferro Leal, PhD </h4>
+            <h4>Ferramenta desenvolvida pelo Grupo Translacional de Oncologia Pulmonar (GTOP): Aléxia Polo, Maria Fernanda Gonçalves, Welinton Hirai e Patrick Cuervo </h4>
+            <br>
+
+        <div class="container">
+          <div class="container left">
+              <h2>Estadiamento Clínico AJCC 7ª edição </h2>
+              <div class="range-group">
+                  <input class="range-input" id="location-range-slider" value="1" min="1" max="5" type="range" />
+                  <div class="slider-labels">
+                      <span class="slider-label">IA</span>
+                      <span class="slider-label"style="margin-right: 8px">IB</span>
+                      <span class="slider-label"style="margin-right: 16px">IIA</span>
+                      <span class="slider-label"style="margin-right: 24px">IIB</span>
+                      <span class="slider-label">IIA</span>
+                  </div>
+              </div>
+          </div><!-- // range-slider -->
+        </div><!--//container-->
+
+            <br>
+
+        <div class="container">
+          <div class="container left">
+            <h2>Classificação de risco - Painel 12-genes</h2>
+            <div class="range-group">
+                <input class="range-input" id="location-range-slider-2" value="1" min="1" max="2" type="range" />
+                <div class="slider-labels">
+                    <span class="slider-label">Baixo Risco</span>
+                    <span class="slider-label">Alto Risco</span>
+                </div>
+            </div>
+        </div><!-- // range-slider -->
+        </div><!--//container-->
+
+        <div class="container">
+          <div class="container left">
+            <div id="app1" class="score-app">
+              <h2>Sobrevida Global</h2>
+              <br><br>
+              <h3>Pontuação Total: <span id="pontuacaoTotalGL">0</span></h3>
+              <input id="scoreGL" style="display: none;">
+              <br>
+              <ul>
+                <li>
+                  <div class="score-bar-wrapper">
+                    <div class="score-pop" style="--left: 100; --deviation: -0.5;"><span></span></div>
+                    <div class="score-bar-1">
+                      <div class="scale"></div>
+                      <input id="score-slider1" value="0" type="range" max="200">
+                    </div>
+                    <span style="--i:0;">0</span><span style="--i:1;">20</span><span style="--i:2;">40</span><span
+                    style="--i:3;">60</span><span style="--i:4;">80</span><span style="--i:5;">100</span>
+                    <span style="--i:6;">120</span><span style="--i:7;">140</span><span style="--i:8;">160</span>
+                    <span style="--i:9;">180</span><span style="--i:10;">200</span>
+                  </div>
+                  <div class="score-number">
+                  </div>
+                </li>
+              </ul>
+              <br><br><br>
+              <div style="text-align: center;">
+              <h3>PROBABILIDADE DE SOBREVIÊNCIA GLOBAL EM 1 ANO (%)</h3>
+              <br>
+              <input id="scoreCircle" style="display: none;">
+              <div class="rating-container">
+              <div  class="rating"><span id="pontuacaoCircle">0</span></div>
+            </div></div>
+            <br><br><br>
+            <div style="text-align: center;">
+              <h3>PROBABILIDADE DE SOBREVIÊNCIA GLOBAL EM 3 ANOS (%)</h3>
+              <br>
+              <input id="scoreCircle3" style="display: none;">
+              <div class="rating-container">
+              <div  class="rating-GL3"><span id="pontuacaoCircle3">0</span></div>
+            </div></div>
+            <br><br><br>
+            <div style="text-align: center;">
+              <h3>PROBABILIDADE DE SOBREVIÊNCIA GLOBAL EM 5 ANOS (%)</h3>
+              <br>
+              <input id="scoreCircle5" style="display: none;">
+              <div class="rating-container">
+              <div  class="rating-GL5"><span id="pontuacaoCircle5">0</span></div>
+            </div></div>
+          </div>         
+          </div>
+        
+          <div class="container left">
+            <div id="app2" class="score-app">
+              <h2>Sobrevida Livre de Evento</h2>
+              <br><br>
+              <h3>Pontuação Total: <span id="pontuacaoTotal">0</span></h3>
+              <input id="score" style="display: none;">
+              <br>
+              <ul>
+                <li>
+                  <div class="score-bar-wrapper">
+                    <div class="score-pop" style="--left: 200; --deviation: -0.5;"><span></span></div>
+                    <div class="score-bar-2">
+                      <div class="scale"></div>
+                      <input id= "score-slider2" value="0" type="range" max="200">
+                    </div>
+                    <span style="--i:0;">0</span><span style="--i:1;">20</span><span style="--i:2;">40</span><span
+                    style="--i:3;">60</span><span style="--i:4;">80</span><span style="--i:5;">100</span>
+                    <span style="--i:6;">120</span><span style="--i:7;">140</span><span style="--i:8;">160</span>
+                    <span style="--i:9;">180</span><span style="--i:10;">200</span>
+                  </div>
+                  <div class="score-number">
+                  </div>
+                </li>
+              </ul>
+              <br><br><br>
+              <div style="text-align: center;">
+              <h3>PROBABILIDADE DE SOBREVIÊNCIA LIVRE DE EVENTO EM 1 ANO (%)</h3>
+              <br>
+              <input id="scoreCircleLD" style="display: none;">
+              <div class="rating-container">
+              <div  class="rating"><span id="pontuacaoCircleLD">0</span></div>
+            </div></div>
+            <br><br><br>
+            <div style="text-align: center;">
+              <h3>PROBABILIDADE DE SOBREVIÊNCIA LIVRE DE EVENTO EM 3 ANOS (%)</h3>
+              <br>
+              <input id="scoreCircleLD3" style="display: none;">
+              <div class="rating-container">
+              <div  class="rating"><span id="pontuacaoCircleLD3">0</span></div>
+            </div></div>
+            <br><br><br>
+            <div style="text-align: center;">
+              <h3>PROBABILIDADE DE SOBREVIÊNCIA LIVRE DE EVENTO EM 5 ANOS (%)</h3>
+              <br>
+              <input id="scoreCircleLD5" style="display: none;">
+              <div class="rating-container">
+              <div  class="rating"><span id="pontuacaoCircleLD5">0</span></div>
+            </div></div>
+          </div>         
+          </div>
+        
+          
+        <div id="resultado-container" style="display: none;">
+          <!-- O resultado será exibido aqui -->
+      </div>
+
+
+    </form>
+
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="script.js"></script>
+
+       
+</body>
+
+</html>
